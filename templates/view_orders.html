@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}View Orders{% endblock %}
+
+{% block content %}
+<h1>Orders</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Order Date</th>
+            <th>Items</th>
+            <th>Total Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.id }}</td>
+            <td>{{ order.customer.name }}</td>
+            <td>{{ order.order_date.strftime('%Y-%m-%d %H:%M') }}</td>
+            <td>
+                <ul>
+                    {% for item in order.order_items %}
+                    <li>{{ item.menu_item.name }} ({{ item.quantity }}) - ${{ "%.2f"|format(item.price) }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+            <td>${{ "%.2f"|format(order.total_price) }}</td>
+            <td>
+                <a href="{{ url_for('edit_order', order_id=order.id) }}" class="btn btn-sm btn-primary">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

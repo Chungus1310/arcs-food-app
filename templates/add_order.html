@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}Add Order{% endblock %}
+
+{% block content %}
+<h1>Add Order</h1>
+<form method="POST" class="form">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.customer_id.label(class="form-label") }}
+        {{ form.customer_id(class="form-control") }}
+        {% if form.customer_id.errors %}
+            <div class="alert alert-danger">
+                {% for error in form.customer_id.errors %}
+                    <span>{{ error }}</span><br>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <h4>Items</h4>
+        <table class="table" id="items-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item_form in form.items %}
+                <tr class="item-row">
+                    <td>
+                        {{ item_form.menu_item_id(class="form-control") }}
+                        {% if item_form.menu_item_id.errors %}
+                            {% for error in item_form.menu_item_id.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ item_form.quantity(class="form-control", min=0) }}
+                        {% if item_form.quantity.errors %}
+                            {% for error in item_form.quantity.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary mb-3" id="add-item">Add Another Item</button>
+    </div>
+    <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addItemBtn = document.getElementById('add-item');
+    const itemsTable = document.querySelector('#items-table tbody');
+
+    addItemBtn.addEventListener('click', function() {
+        const lastRow = itemsTable.querySelector('.item-row:last-child');
+        const newRow = lastRow.cloneNode(true);
+        const newIndex = document.querySelectorAll('.item-row').length;
+
+        // Update select element
+        const select = newRow.querySelector('select');
+        select.name = select.name.replace(/items-\d+/, 'items-' + newIndex);
+        select.id = select.name;
+        select.selectedIndex = 0;
+
+        // Update quantity input
+        const input = newRow.querySelector('input[type="number"]');
+        input.name = input.name.replace(/items-\d+/, 'items-' + newIndex);
+        input.id = input.name;
+        input.value = 1;
+
+        itemsTable.appendChild(newRow);
+    });
+});
+</script>
+{% endblock %}

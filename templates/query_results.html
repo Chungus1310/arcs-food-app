@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ query_name }}{% endblock %}
+
+{% block content %}
+<h1>{{ query_name }}</h1>
+{% if results %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                {% for header in headers %}
+                <th>{{ header }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                {% for value in row %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No results found for this query.</p>
+{% endif %}
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+{% endblock %}

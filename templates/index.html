@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <!-- Hero Section -->
+    <div class="hero-section text-center mb-4">
+        <h1 class="display-4">F&B Management System</h1>
+        <p class="lead">Chun's poison free food (fr)</p>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="stat-card" data-value="{{ monthly_orders }}">
+                <i class="bi bi-graph-up"></i>
+                <h3>Monthly Orders</h3>
+                <p class="stat-number">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card" data-value="{{ active_customers }}">
+                <i class="bi bi-people"></i>
+                <h3>Active Customers</h3>
+                <p class="stat-number">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card" data-value="{{ monthly_revenue }}">
+                <i class="bi bi-currency-dollar"></i>
+                <h3>Monthly Revenue</h3>
+                <p class="stat-number">0</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card" data-value="{{ avg_rating }}">
+                <i class="bi bi-star"></i>
+                <h3>Average Rating</h3>
+                <p class="stat-number">0</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions Bar -->
+    <div class="quick-actions mb-4">
+        <a href="{{ url_for('add_order') }}" class="btn btn-primary"><i class="bi bi-plus-circle"></i> New Order</a>
+        <a href="{{ url_for('add_customer') }}" class="btn btn-success"><i class="bi bi-person-plus"></i> Add Customer</a>
+        <a href="{{ url_for('search_orders') }}" class="btn btn-info"><i class="bi bi-search"></i> Search Orders</a>
+        <a href="{{ url_for('query_outer_join') }}" class="btn btn-warning"><i class="bi bi-graph-up"></i> View Reports</a>
+    </div>
+
+    <!-- Main Action Cards -->
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="action-card">
+                <i class="bi bi-people"></i>
+                <h3>Manage Customers</h3>
+                <p>View and manage customer information, orders, and preferences</p>
+                <a href="{{ url_for('view_customers') }}" class="btn btn-outline-light">Go to Customers</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="action-card">
+                <i class="bi bi-cart"></i>
+                <h3>Manage Orders</h3>
+                <p>Track and process orders, view history, and manage deliveries</p>
+                <a href="{{ url_for('view_orders') }}" class="btn btn-outline-light">Go to Orders</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="action-card">
+                <i class="bi bi-menu-button-wide"></i>
+                <h3>Manage Menu</h3>
+                <p>Update menu items, prices, and manage inventory</p>
+                <a href="{{ url_for('view_menu') }}" class="btn btn-outline-light">Go to Menu</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

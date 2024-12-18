@@ -1,0 +1,9 @@
+Flask
+Flask-SQLAlchemy
+Flask-WTF
+WTForms
+SQLAlchemy
+Werkzeug
+email_validator
+Faker
+Flask-Migrate

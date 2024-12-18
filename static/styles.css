@@ -1,0 +1,286 @@
+:root {
+  --dark-bg: #121212;
+  --card-bg: #1E1E1E;
+  --text-primary: rgba(255, 255, 255, 0.87);
+  --text-secondary: rgba(255, 255, 255, 0.6);
+  --primary-gradient: linear-gradient(135deg, #2196F3, #1976D2);
+  --secondary-gradient: linear-gradient(135deg, #4CAF50, #388E3C);
+  --warning-gradient: linear-gradient(135deg, #FFA726, #F57C00);
+  --danger-gradient: linear-gradient(135deg, #EF5350, #D32F2F);
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --hover-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme {
+  background: url('../static/images/bg.png') no-repeat center center fixed; /* Add background image */
+  background-size: cover; /* Ensure the image covers the entire viewport */
+  color: var(--text-primary);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+/* Ensure proper contrast and readability */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Enhanced Navigation Styling */
+.navbar {
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  padding: 1rem 0;
+}
+
+.navbar-brand {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+}
+
+.nav-link {
+  color: var(--text-secondary) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-primary) !important;
+}
+
+.navbar {
+  background: var(--card-bg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Enhanced Card Styling */
+.stat-card, .action-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stat-card {
+  text-align: center;
+  background: linear-gradient(145deg, var(--card-bg), #252525);
+}
+
+.action-card {
+  background: linear-gradient(145deg, var(--card-bg), #252525);
+}
+
+.stat-card:hover, .action-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.stat-card i, .action-card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Enhanced Quick Actions */
+.quick-actions {
+  background: var(--card-bg);
+  padding: 1.25rem;
+  border-radius: 12px;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: var(--card-shadow);
+  margin: 2rem 0;
+}
+
+.quick-actions .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.quick-actions .btn i {
+  font-size: 1.1rem;
+}
+
+.quick-actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hover-shadow);
+}
+
+/* Enhanced Button Styling */
+.btn {
+  border: none;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-image: var(--primary-gradient);
+  color: var(--text-primary);
+}
+
+.btn-success {
+  background-image: var(--secondary-gradient);
+  color: var(--text-primary);
+}
+
+.btn-warning {
+  background-image: var(--warning-gradient);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background-image: var(--danger-gradient);
+  color: var(--text-primary);
+}
+
+.btn-outline-light {
+  border: 2px solid var(--text-secondary);
+  color: var(--text-primary);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+  background: var(--text-primary);
+  color: var(--dark-bg);
+  border-color: var(--text-primary);
+}
+
+.dropdown-menu-dark {
+  background: var(--card-bg);
+}
+
+.footer {
+  background: var(--card-bg);
+  padding: 1rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Responsive Design and Effects */
+@media (max-width: 1200px) {
+  .container-fluid {
+      padding-left: 2rem;
+      padding-right: 2rem;
+  }
+
+  .stat-card {
+      padding: 1.25rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+      padding: 2rem 1rem;
+  }
+
+  .hero-section h1 {
+      font-size: 2.5rem;
+  }
+
+  .quick-actions {
+      justify-content: center;
+  }
+
+  .quick-actions .btn {
+      min-width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container-fluid {
+      padding-left: 1rem;
+      padding-right: 1rem;
+  }
+
+  .navbar-collapse {
+      background: var(--card-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+  }
+
+  .quick-actions {
+      flex-direction: column;
+      align-items: stretch;
+  }
+
+  .quick-actions .btn {
+      width: 100%;
+      justify-content: center;
+  }
+
+  .stat-card, .action-card {
+      margin-bottom: 1rem;
+  }
+
+  .action-card {
+      text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section h1 {
+      font-size: 2rem;
+  }
+
+  .hero-section .lead {
+      font-size: 1rem;
+  }
+
+  .stat-number {
+      font-size: 1.5rem;
+  }
+
+  .stat-card i, .action-card i {
+      font-size: 1.5rem;
+  }
+}
+
+/* Animation Classes */
+.animate-in {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Enhanced Touch Device Interactions */
+@media (hover: none) {
+  .stat-card:active, .action-card:active {
+      transform: scale(0.98);
+  }
+
+  .btn:active {
+      transform: translateY(1px);
+  }
+}
